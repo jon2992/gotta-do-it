@@ -1,0 +1,10 @@
+%ul
+  - @todos.each do |todo|
+    %li
+      %h1= todo.name
+      %p= todo.description
+      %p= "Completed" if todo.completed
+
+%div
+  %p Create new ones?
+  = link_to 'Create a new todo', new_todo_path

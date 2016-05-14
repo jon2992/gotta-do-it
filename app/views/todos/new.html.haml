@@ -1,0 +1,8 @@
+= form_tag(todos_path, method: :post) do
+  = label_tag :name, 'Name: '
+  = text_field_tag :name
+
+  = label_tag :description, 'Description: '
+  = text_field_tag :description
+
+  = submit_tag('CREATE')
