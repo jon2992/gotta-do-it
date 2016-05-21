@@ -1,3 +1,7 @@
+- if @todos.empty?
+  .alert
+    %p= 'No Todo items found'
+
 %ul
   - @todos.each do |todo|
     %li

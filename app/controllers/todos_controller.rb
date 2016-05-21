@@ -5,7 +5,7 @@ class TodosController < ApplicationController
   end
 
   def show
-    @todo = Todo.find(params[:id])
+    @todo = Todo.find(nav_params[:id])
   end
 
   def new
@@ -13,16 +13,18 @@ class TodosController < ApplicationController
   end
 
   def create
-    todo = Todo.new(todo_params)
-    todo.save
+    @todo = Todo.new(todo_params)
 
-    redirect_to action: :index
+    @todo.save ? redirect_to(@todo) : render(action: :new)
   end
 
   private
 
   def todo_params
-    params.permit(:name, :description)
+    params.require(:todo).permit(:name, :description)
   end
 
+  def nav_params
+    params.permit(:id)
+  end
 end

@@ -28,5 +28,8 @@ module GottaDoIt
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+
+    # We, for now, don't want to wrap form_for errors in the pair of divs.
+    config.action_view.field_error_proc = Proc.new { |html_tag, _| html_tag }
   end
 end
