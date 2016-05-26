@@ -20,8 +20,16 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  save: "Save"
   todos:
-    new:
-      create: "Create"
+    edit:
+      heading: "Editing todo"
+    form:
       description_label: "Description:"
       name_label: "Name:"
+    new:
+      heading: "Create new todo"
+    show:
+      back_to_list: "Back to list"
+      edit: "Edit"
+

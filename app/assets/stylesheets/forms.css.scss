@@ -1,0 +1,13 @@
+@import "base";
+
+.field__entry, .field__label {
+  display: block;
+}
+
+.field__entry {
+  &.field__entry__large-text-area {
+    width: 25em;
+    height: 14em;
+    font-family: $font-family-copy;
+  }
+}

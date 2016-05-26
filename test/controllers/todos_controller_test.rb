@@ -62,8 +62,8 @@ class TodosControllerTest < ActionController::TestCase
 
     # TODO: Until I show errors, this is fine.
     assert_select('label', count: 2) do |elements|
-      assert_select elements.first.name, I18n.t('todos.new.name_label')
-      assert_select elements[1].name, I18n.t('todos.new.description_label')
+      assert_select elements.first.name, I18n.t('todos.form.name_label')
+      assert_select elements[1].name, I18n.t('todos.form.description_label')
     end
   end
 end

@@ -1,2 +1,6 @@
 %h1{class: ('todo__completed' if @todo.completed?)}= @todo.name
 %p= @todo.description
+
+.actions
+  = link_to t('.edit'), edit_todo_path(@todo.id)
+  = link_to t('.back_to_list'), todos_path

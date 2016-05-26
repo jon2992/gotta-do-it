@@ -1,0 +1,10 @@
+= form_for(todo, method: form_action) do |f|
+  %p
+    = f.label :name, t('.name_label'), class: 'field__label'
+    = f.text_field :name, class: 'field__entry'
+
+  %p
+    = f.label :description, t('.description_label'), class: 'field__label'
+    = f.text_area :description, class: 'field__entry field__entry__large-text-area'
+
+  = f.submit(t('save'))
