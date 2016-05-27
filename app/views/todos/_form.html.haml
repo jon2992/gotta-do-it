@@ -7,4 +7,10 @@
     = f.label :description, t('.description_label'), class: 'field__label'
     = f.text_area :description, class: 'field__entry field__entry__large-text-area'
 
+  - unless new_todo
+    %p
+      = f.label :completed, class: 'field__label' do
+        = f.check_box :completed, class: 'field__entry field__entry__checkbox'
+        = t('.complete')
+
   = f.submit(t('save'))

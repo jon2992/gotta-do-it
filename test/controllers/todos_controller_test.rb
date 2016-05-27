@@ -61,6 +61,39 @@ class TodosControllerTest < ActionController::TestCase
     post :create, todo: {description: 'something'}
 
     # TODO: Until I show errors, this is fine.
+    form_content_assertions
+  end
+
+  # Edit action tests
+  def test_displays_correct_todo
+    todo = todos(:two)
+
+    get :edit, id: todo.id
+
+    assert_select('.field__entry')
+  end
+
+  def test_displays_completed_field
+    get :edit, id: Todo.first.id
+
+    assert_select('input[type=checkbox].field__entry__checkbox')
+  end
+
+  # Update action tests
+  def test_update_succeeds_redirects_to_show
+    todo = todos(:one)
+
+    patch :update, id: todo.id, todo: {completed: true}
+
+    assert_equal(Todo.find(todo.id).completed, true)
+    assert_redirected_to action: :show,
+                         controller: :todos,
+                         id: todo.id
+  end
+
+  private
+
+  def form_content_assertions
     assert_select('label', count: 2) do |elements|
       assert_select elements.first.name, I18n.t('todos.form.name_label')
       assert_select elements[1].name, I18n.t('todos.form.description_label')

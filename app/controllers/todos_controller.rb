@@ -27,6 +27,14 @@ class TodosController < ApplicationController
   end
 
   ##
+  # Simple update action for updating a todo
+  def update
+    @todo = Todo.find(nav_params[:id])
+
+    @todo.update(todo_params) ? redirect_to(@todo) : render(action: :edit)
+  end
+
+  ##
   # Create action that saves a new todo
   def create
     @todo = Todo.new(todo_params)
@@ -40,7 +48,7 @@ class TodosController < ApplicationController
   # Params for a todo. Requires the parent level :todo that then allows
   # the attributes of a todo
   def todo_params
-    params.require(:todo).permit(:name, :description)
+    params.require(:todo).permit(:name, :description, :completed)
   end
 
   ##

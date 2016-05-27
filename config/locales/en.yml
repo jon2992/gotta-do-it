@@ -25,6 +25,7 @@ en:
     edit:
       heading: "Editing todo"
     form:
+      complete: "Completed"
       description_label: "Description:"
       name_label: "Name:"
     new:
