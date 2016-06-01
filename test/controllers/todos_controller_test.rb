@@ -10,7 +10,7 @@ class TodosControllerTest < ActionController::TestCase
       assert_select('li p', s.description)
     end
 
-    assert_select('li p', text: 'Completed', count: 1)
+    assert_select('li p', text: I18n.t('todos.index.completed'), count: 1)
   end
 
   def test_index_with_no_todos
@@ -18,7 +18,7 @@ class TodosControllerTest < ActionController::TestCase
 
     get :index
 
-    assert_select('.alert p', 'No Todo items found')
+    assert_select('.alert p', I18n.t('todos.index.no_todos_found'))
   end
 
   # Show tests
@@ -43,25 +43,6 @@ class TodosControllerTest < ActionController::TestCase
     get :show, id: incomplete_todo.id
 
     assert_empty(css_select('h1.todo__completed'))
-  end
-
-  # Create tests
-  def test_create_succeeds_redirects_to_show
-    new_todo = Todo.new(name: 'Some name')
-
-    post :create, todo: {name: new_todo.name}
-
-    assert Todo.find_by(name: new_todo.name)
-    assert_redirected_to action: :show,
-                         controller: :todos,
-                         id: Todo.order(:created_at).last.id
-  end
-
-  def test_create_fails_renders_new
-    post :create, todo: {description: 'something'}
-
-    # TODO: Until I show errors, this is fine.
-    form_content_assertions
   end
 
   # Edit action tests

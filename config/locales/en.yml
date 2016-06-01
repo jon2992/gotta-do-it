@@ -25,9 +25,13 @@ en:
     edit:
       heading: "Editing todo"
     form:
-      complete: "Completed"
+      completed: "Completed"
       description_label: "Description:"
       name_label: "Name:"
+    index:
+      completed: "Completed"
+      create_new_todo: "Create a new todo"
+      no_todos_found: "No Todos found"
     new:
       heading: "Create new todo"
     show:
