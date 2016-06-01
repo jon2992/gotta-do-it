@@ -1,4 +1,6 @@
 language: ruby
 rvm:
   - 2.2
-script: bundle exec rake test && bundle exec rake test:features
+script:
+  - bundle exec rake db:test:prepare
+  - bundle exec rake test && bundle exec rake test:features
